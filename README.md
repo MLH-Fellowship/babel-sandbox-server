@@ -15,7 +15,7 @@ a [Sails v1](https://sailsjs.com) application
 + Install [MongoDB](https://www.mongodb.com/try/download/community)
 + Install Sails.js: `npm install -g sails`
 + Install dependencies: `npm install`
-+ Run: `sails lift` or `sails lif --port NUMBER` if you encounter `EADDRINUSE`
++ Run: `sails lift` or `sails lift --port NUMBER` if you encounter `EADDRINUSE`
 + Open [Postman](https://www.postman.com/downloads/)
 + Create a new POST request
 + Enter: `http://localhost:1337/api/v1/config/update` and click Send
