@@ -21,12 +21,12 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    // One way assocaition (see file:api/models/Source.js)
+    // One way assocaition
     source: {
       model:'source',
     },
 
-    // One way association (see file:api/models/Plugin.js)
+    // One way association
     plugin: {
       model:'plugin'
     },
