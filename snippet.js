@@ -31,7 +31,7 @@ class Snippet {
     // The resulting code is always at least 11 characters long.
     // We just need to make sure that we don't end on a trailing _.
     let hashLength = 11;
-    for (; hashLength <= code.length && code[hashLength - 1] == "_"; ) {
+    for (; hashLength <= code.length && code[hashLength - 1] == "_";) {
       hashLength++;
     }
     return code.slice(0, hashLength);
