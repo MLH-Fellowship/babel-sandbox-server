@@ -11,7 +11,7 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    base64ID: { type:'string' },
+    base64BlobKey: { type:'string' },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -21,23 +21,21 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    // One-to-One (see file:api/models/Source.js)
+    // One way assocaition (see file:api/models/Source.js)
     source: {
-      collection:'source',
-      via: 'blobKey'
+      model:'source',
     },
 
-    // One-to-One (see file:api/models/Plugin.js)
+    // One way association (see file:api/models/Plugin.js)
     plugin: {
-      collection:'plugin',
-      via: 'blobKey'
+      model:'plugin'
     },
 
     // One-to-Many (see file:api/models/Config.js)
     configs: {
-      collection: "config",
-      via: "configKey",
+      collection: 'config',
+      via: 'blobKey',
     },
   },
-  datastore: "mongodb",
+  datastore: 'mongodb',
 };
