@@ -38,4 +38,6 @@ class Snippet {
   }
 }
 
-export { Snippet };
+module.exports = {
+  Snippet,
+};
