@@ -15,8 +15,8 @@ module.exports = {
   },
 
   fn: async (inputs) => {
-    sails.log('Viewing all blobs');
-    const blobs = await Blobs.find();
-    return blobs;
+    sails.log('Viewing all plugins');
+    const plugins = await Plugin.find();
+    return plugins;
   },
 };
