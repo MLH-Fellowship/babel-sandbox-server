@@ -1,6 +1,4 @@
 const { Snippet } = require("../../../snippet");
-const UglifyJS = require("uglify-js");
-const { config } = require("grunt");
 const crypto = require("crypto");
 module.exports = {
   friendlyName: "Create new blob test",
@@ -69,8 +67,6 @@ module.exports = {
       configIDs.push(newConfig.id);
     }
 
-    sails.log(configIDs);
-
     // Add configs to blob collection if not already present
     await Blobs.addToCollection(newBlob.id, "configs").members(configIDs);
 
@@ -86,10 +82,7 @@ module.exports = {
       );
     });
 
-
     // TODO: Add a return; problem: the fields "source" and "plugin" show up as null :(
-    // return {
-    //   blob: newBlob
-    // }
+    return { blob: newBlob };
   },
 };

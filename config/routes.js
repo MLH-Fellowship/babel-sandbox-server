@@ -33,13 +33,13 @@ module.exports.routes = {
   'GET /api/v1/blobs/view': { action: 'blobs/view' },
   'POST /api/v1/blobs/create': { action: 'blobs/create' },
 
-  // For testing
+  // Testing purposes
   'GET /api/v1/plugin/view': { action: 'plugin/view' },
 
-  // For testing
+  // Testing purposes
   'GET /api/v1/config/view': { action: 'config/view' },
 
-  // For testing
+  // Testing purposes
   'GET /api/v1/source/view': { action: 'source/view' },
 
   /***************************************************************************
