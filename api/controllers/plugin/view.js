@@ -15,7 +15,7 @@ module.exports = {
   },
 
   fn: async (inputs) => {
-    console.log('Viewing all plugins');
+    sails.log('Viewing all plugins');
     const plugins = await Plugin.find();
     return plugins;
   },

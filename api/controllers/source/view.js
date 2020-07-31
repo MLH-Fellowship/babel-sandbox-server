@@ -15,7 +15,7 @@ module.exports = {
   },
 
   fn: async (inputs) => {
-    console.log('Viewing all sources');
+    sails.log('Viewing all sources');
     const sources = await Source.find();
     return sources;
   },
