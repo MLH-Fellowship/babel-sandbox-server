@@ -17,7 +17,9 @@ a [Sails v1](https://sailsjs.com) application
 + Install dependencies: `npm install`
 + Run: `sails lift`.
 + The server is now running on port `1337`
-+ 
++ Run [The Babel Sandbox](https://github.com/MLH-Fellowship/babel-sandbox)
+
+### Testing
 + Open [Postman](https://www.postman.com/downloads/)
 + Create a new POST request
 + Enter: `http://localhost:1337/api/v1/config/update` and click Send
