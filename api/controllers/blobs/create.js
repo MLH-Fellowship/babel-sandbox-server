@@ -1,5 +1,3 @@
-const { Snippet } = require("../../../snippet");
-const crypto = require("crypto");
 module.exports = {
   friendlyName: "Create new blob test",
 
@@ -32,17 +30,11 @@ module.exports = {
   fn: async ({ source, plugin, configs }) => {
     sails.log("Creating blob");
 
-    const blobBase64 = crypto
-      .createHash("sha256")
-      .update(Snippet.salt)
-      .update(JSON.stringify({ source, plugin, configs }))
-      .digest("hex");
-
     // Check for Blob and add if not present
-    const newBlob = await Blobs.findOrCreate(
-      { base64BlobKey: blobBase64 },
-      { base64BlobKey: blobBase64 }
-    );
+    const newBlob = await Blobs.create().fetch();
+    
+    // Add shareble link to response body
+    newBlob.url = `http://localhost:1337/share/${newBlob.id}`;
 
     // Check for Plugin and add if not present
     const newPlugin = await Plugin.findOrCreate(
@@ -83,6 +75,6 @@ module.exports = {
     });
 
     // TODO: Add a return; problem: the fields "source" and "plugin" show up as null :(
-    return { blob: newBlob };
+    return _.omit(newBlob, 'source', 'plugin');
   },
 };

@@ -25,8 +25,9 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
     // Other side of One-to-Many
-    blobKey: {
-      model: 'blobs'
+    blobKeys: {
+      collection: 'blobs',
+      via: 'configs'
     }
 
   },
