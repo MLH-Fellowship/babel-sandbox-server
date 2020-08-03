@@ -10,16 +10,13 @@ a [Sails v1](https://sailsjs.com) application
 + [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
 + [Community support options](https://sailsjs.com/support)
 + [Professional / enterprise options](https://sailsjs.com/enterprise)
++ [Postman Team](https://app.getpostman.com/join-team?invite_code=a7124ca1eb5a4a9e4c420be34ca7e1f7)
 
 ### Quick Start
 + Install [MongoDB](https://www.mongodb.com/try/download/community)
 + Install Sails.js: `npm install -g sails`
 + Install dependencies: `npm install`
-+ Run: `sails lift`.
-+ The server is now running on port `1337`
-+ Run [The Babel Sandbox](https://github.com/MLH-Fellowship/babel-sandbox)
-
-### Testing
++ Run: `sails lift` or `sails lift --port NUMBER` if you encounter `EADDRINUSE`
 + Open [Postman](https://www.postman.com/downloads/)
 + Create a new POST request
 + Enter: `http://localhost:1337/api/v1/config/update` and click Send
