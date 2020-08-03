@@ -34,7 +34,7 @@ module.exports = {
     const newBlob = await Blobs.create().fetch();
     
     // Add shareble link to response body
-    newBlob.url = `http://localhost:1337/share/${newBlob.id}`;
+    newBlob.url = `http://localhost:${sails.config.port}/share/${newBlob.id}`;
 
     // Check for Plugin and add if not present
     const newPlugin = await Plugin.findOrCreate(
