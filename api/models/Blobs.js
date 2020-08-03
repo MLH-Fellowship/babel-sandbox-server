@@ -11,8 +11,6 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    base64BlobKey: { type:'string' },
-
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -34,7 +32,7 @@ module.exports = {
     // One-to-Many (see file:api/models/Config.js)
     configs: {
       collection: 'config',
-      via: 'blobKey',
+      via: 'blobKeys',
     },
   },
   datastore: 'mongodb',
