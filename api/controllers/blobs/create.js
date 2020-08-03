@@ -74,7 +74,7 @@ module.exports = {
       );
     });
 
-    // TODO: Add a return; problem: the fields "source" and "plugin" show up as null :(
+    // Return newly created blob, omit the `source` and `plugin` fields
     return _.omit(newBlob, 'source', 'plugin');
   },
 };
