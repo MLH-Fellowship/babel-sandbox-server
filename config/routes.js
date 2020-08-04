@@ -32,7 +32,7 @@ module.exports.routes = {
 
   'GET /api/v1/blobs/view':               { action: 'blobs/view' },
   'POST /api/v1/blobs/create':            { action: 'blobs/create' },
-  'GET /api/v1/blobs/get-blob/:id':       { action: 'blobs/get-blob' },
+  'GET /api/v1/blobs/:id':                { action: 'blobs/get-blob' },
   'GET /share/:id':                       { action: 'blobs/get-blob' },
 
   // Testing purposes
