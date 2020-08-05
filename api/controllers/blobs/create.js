@@ -63,8 +63,7 @@ module.exports = {
     await Blobs.addToCollection(newBlob.id, "configs").members(configIDs);
 
     // Add source and plugin to blob
-    await Blobs.update(
-      { id: newBlob.id },
+    await Blobs.update({ id: newBlob.id }).set(
       { source: newSource.id, plugin: newPlugin.id }
     ).exec(function (err, blob) {
       sails.log(
