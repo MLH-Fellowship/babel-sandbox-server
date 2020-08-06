@@ -1,20 +1,17 @@
 module.exports = {
-  friendlyName: 'TestFriendlyName',
-  description: 'Test description',
-  inputs: {
-
-  },
+  friendlyName: 'View all sources',
+  description: 'View all sources added to db',
 
   exits: {
     success: {
-      outputDescription: 'Test output description',
+      outputDescription: 'Success',
       outputType: 'ref',
     },
     forbidden: { responseType: 'forbidden' },
     notFound: { responseType: 'notFound' },
   },
 
-  fn: async (inputs) => {
+  fn: async () => {
     sails.log('Viewing all sources');
     const sources = await Source.find();
     return sources;

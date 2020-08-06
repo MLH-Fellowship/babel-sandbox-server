@@ -23,26 +23,28 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
 
-  // No apparent use for webpages right now...
-  '/':                                    { view: 'pages/homepage' },
-
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
-
-  'GET /api/v1/blobs/view':               { action: 'blobs/view' },
+  
+  // Production endpoints
   'POST /api/v1/blobs/create':            { action: 'blobs/create' },
   'POST /api/v1/blobs/fork/:id':          { action: 'blobs/fork' },
+  
   'GET /api/v1/blobs/:id':                { action: 'blobs/get-blob' },
   'GET /share/:id':                       { action: 'blobs/get-blob' },
+  
+  // Endpoints for testing purposes
+  'GET /api/v1/blobs/view':               { action: 'blobs/view' },
 
-  // Testing purposes
+  'GET /api/v1/blobs/view-forks/:id':     { action: 'blobs/view-forks' },
+
+  'GET /api/v1/blobs/view-configs/:id':   { action: 'blobs/view-configs' },
+
   'GET /api/v1/plugin/view':              { action: 'plugin/view' },
 
-  // Testing purposes
   'GET /api/v1/config/view':              { action: 'config/view' },
 
-  // Testing purposes
   'GET /api/v1/source/view':              { action: 'source/view' },
 
   /***************************************************************************

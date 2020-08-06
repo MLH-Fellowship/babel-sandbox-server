@@ -39,7 +39,7 @@ module.exports = {
     forkedFrom: {
       model: 'blobs',
     },
-    
+
     // Plural reflexive association
     forks: {
       collection: 'blobs'
