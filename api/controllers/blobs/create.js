@@ -12,12 +12,10 @@ module.exports = {
     plugin: {
       type: 'string',
       description: 'Plugin code in base 64 representation',
-      required: true,
     },
     configs: {
       description: 'An array of base 64 string, each representing configs',
       type: ['string'],
-      required: true,
     },
   },
 
@@ -36,42 +34,47 @@ module.exports = {
     // Add shareble link to response body
     newBlob.url = `/share/${newBlob.id}`;
 
-    // Check for Plugin and add if not present
-    const newPlugin = await Plugin.findOrCreate(
-      { base64PluginKey: plugin },
-      { base64PluginKey: plugin }
-    );
-
     // Check for Source and add if not present
     const newSource = await Source.findOrCreate(
       { base64SourceKey: source },
       { base64SourceKey: source }
     );
 
+    // Plugin is optional and it might be null/empty-string
+    // hence terneray opertor, .findOrCreate() throws otherwise :(
+    const newPlugin = plugin
+      ? await Plugin.findOrCreate(
+          { base64PluginKey: plugin },
+          { base64PluginKey: plugin }
+        )
+      : null;
+
     // Create new config records if not alrady existing
     // Keep track of their primary key using configIDs
     const configIDs = [];
-    for (const config of configs) {
-      const newConfig = await Config.findOrCreate(
-        { base64ConfigKey: config },
-        { base64ConfigKey: config }
-      );
-      configIDs.push(newConfig.id);
+    if (configs) {
+      for (const config of configs) {
+        const newConfig = await Config.findOrCreate(
+          { base64ConfigKey: config },
+          { base64ConfigKey: config }
+        );
+        configIDs.push(newConfig.id);
+      }
     }
 
     // Add configs to blob collection if not already present
     await Blobs.addToCollection(newBlob.id, 'configs').members(configIDs);
 
     // Add source and plugin to blob
-    await Blobs.update({ id: newBlob.id }).set(
-      { source: newSource.id, plugin: newPlugin.id }
-    ).exec((err) => {
-      sails.log(
-        err
-          ? `Error creating new blob: ${err}`
-          : `Successfully created new blob`
-      );
-    });
+    await Blobs.update({ id: newBlob.id })
+      .set({ source: newSource.id, plugin: newPlugin ?.id ?? null })
+      .exec((err) => {
+        sails.log(
+          err
+            ? `Error creating new blob: ${err}`
+            : `Successfully created new blob`
+        );
+      });
 
     // Return newly created blob, omit the `source` and `plugin` fields
     return _.omit(newBlob, 'source', 'plugin');

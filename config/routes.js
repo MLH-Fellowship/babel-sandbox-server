@@ -26,16 +26,16 @@ module.exports.routes = {
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
-  
+
   // Production endpoints
   'POST /api/v1/blobs/create':            { action: 'blobs/create' },
   'POST /api/v1/blobs/fork/:id':          { action: 'blobs/fork' },
 
   'PUT /api/v1/blobs/update/:id':         { action: 'blobs/update' },
-  
+
   'GET /api/v1/blobs/:id':                { action: 'blobs/get-blob' },
   'GET /share/:id':                       { action: 'blobs/get-blob' },
-  
+
   // Endpoints for testing purposes
   'GET /api/v1/blobs/view':               { action: 'blobs/view' },
 

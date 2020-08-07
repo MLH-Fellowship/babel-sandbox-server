@@ -20,16 +20,26 @@ module.exports = {
 
   fn: async ({ id }) => {
     sails.log('Forking from: ', id);
+
+    // Find orignal-blob and initialize fork-blob
     const originalBlob = await Blobs.findOne({ id });
+    if (!originalBlob) { throw 'notFound'; }
+
     const forkBlob = await Blobs.create().fetch();
+    sails.log('New fork ID is: ', forkBlob.id);
+
+    // Get the config IDs of original-blob
     const configIDs = await Blobs.findOne({ id })
       .populate('configs')
       .then(({ configs }) => configs.map(({ id }) => id));
-    sails.log('New fork ID is: ', forkBlob.id);
 
-    await Blobs.addToCollection(originalBlob.id, 'forks').members([forkBlob.id]);
+    // Add configIDs to fork-blob
     await Blobs.addToCollection(forkBlob.id, 'configs').members(configIDs);
 
+    // Add fork-blob's id to orignal-blob's list of forks
+    await Blobs.addToCollection(originalBlob.id, 'forks').members([forkBlob.id]);
+
+    // Add source, plugin and original-fork's ID to fork-blob
     await Blobs.update({ id: forkBlob.id })
       .set({
         source: originalBlob.source,
@@ -44,6 +54,10 @@ module.exports = {
         );
       });
 
+    // Add share link to res body
+    forkBlob.url = `/share/${forkBlob.id}`;
+
+    // Return everything in forkBlob apart from the `source` and `plugin` field
     return _.omit(forkBlob, 'source', 'plugin');
   },
 };
