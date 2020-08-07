@@ -41,7 +41,7 @@ module.exports = {
     );
 
     // Plugin is optional and it might be null/empty-string
-    // hence terneray opertor, .findOrCreate() throws otherwise :(
+    // hence ternary opertor, .findOrCreate() throws otherwise :(
     const newPlugin = plugin
       ? await Plugin.findOrCreate(
           { base64PluginKey: plugin },
