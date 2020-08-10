@@ -1,20 +1,17 @@
 module.exports = {
-  friendlyName: 'TestFriendlyName',
-  description: 'Test description',
-  inputs: {
-
-  },
+  friendlyName: 'View all configs',
+  description: 'View all configs added to db',
 
   exits: {
     success: {
-      outputDescription: 'Test output description',
+      outputDescription: 'Success',
       outputType: 'ref',
     },
     forbidden: { responseType: 'forbidden' },
     notFound: { responseType: 'notFound' },
   },
 
-  fn: async (inputs) => {
+  fn: async () => {
     sails.log('Viewing all configs');
     const configs = await Config.find();
     return configs;

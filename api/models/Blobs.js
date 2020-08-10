@@ -34,6 +34,17 @@ module.exports = {
       collection: 'config',
       via: 'blobKeys',
     },
+
+    // Singular reflexive association
+    forkedFrom: {
+      model: 'blobs',
+    },
+
+    // Plural reflexive association
+    forks: {
+      collection: 'blobs'
+    }
+
   },
   datastore: 'mongodb',
 };
