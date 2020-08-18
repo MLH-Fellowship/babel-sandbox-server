@@ -147,9 +147,9 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // cors: {
-    //   // allowOrigins: ['https://modest-brown-7602e5.netlify.app']
-    // },
+    cors: {
+      allowOrigins: ['https://modest-brown-7602e5.netlify.app']
+    },
 
   },
 
