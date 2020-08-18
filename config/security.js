@@ -28,10 +28,10 @@ module.exports.security = {
   *                                                                          *
   ***************************************************************************/
 
-  cors: {
-    allRoutes: true,
-    allowOrigins: ['https://modest-brown-7602e5.netlify.app'],
-  },
+  // cors: {
+  //   allRoutes: true,
+  //   allowOrigins: ['https://modest-brown-7602e5.netlify.app'],
+  // },
 
 
   /****************************************************************************
