@@ -32,7 +32,7 @@ module.exports = {
     const newBlob = await Blobs.create().fetch();
 
     // Add shareble link to response body
-    newBlob.url = `/share/${newBlob.id}`;
+    newBlob.url = `#/share/${newBlob.id}`;
 
     // Check for Source and add if not present
     const newSource = await Source.findOrCreate(
@@ -44,9 +44,9 @@ module.exports = {
     // hence ternary opertor, .findOrCreate() throws otherwise :(
     const newPlugin = plugin
       ? await Plugin.findOrCreate(
-          { base64PluginKey: plugin },
-          { base64PluginKey: plugin }
-        )
+        { base64PluginKey: plugin },
+        { base64PluginKey: plugin }
+      )
       : null;
 
     // Create new config records if not alrady existing
@@ -67,7 +67,7 @@ module.exports = {
 
     // Add source and plugin to blob
     await Blobs.update({ id: newBlob.id })
-      .set({ source: newSource.id, plugin: newPlugin ?.id ?? null })
+      .set({ source: newSource.id, plugin: newPlugin?.id ?? null })
       .exec((err) => {
         sails.log(
           err
