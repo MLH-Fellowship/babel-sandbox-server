@@ -57,6 +57,16 @@ module.exports = {
             (config) => config.base64ConfigKey
           ) : null)
       );
+
+    // Add forks to response body
+    await Blobs.findOne({ id })
+      .populate('forks')
+      .then(
+        ({ forks }) =>
+          (responseBody.forks = forks ? forks.map(
+            (fork) => fork.id
+          ) : null)
+      );
     return responseBody;
   },
 };

@@ -24,5 +24,5 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
-  datastore: 'mongodb',
+  datastore: 'default',
 };
