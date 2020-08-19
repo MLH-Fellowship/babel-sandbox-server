@@ -36,7 +36,7 @@ module.exports = {
   fn: async function ({ id, source, plugin, configs }) {
     // Check if blob exists
     const updatedBlob = await Blobs.findOne({ id });
-    if (!updatedBlob) { throw 'notFound' ;}
+    if (!updatedBlob) { throw 'notFound'; }
 
     sails.log('Updating blob: ', id);
 
@@ -68,7 +68,7 @@ module.exports = {
     // Updated the blob source, plugin and configs
     await Blobs.updateOne({ id }).set({
       source: updatedSource.id,
-      plugin: updatedPlugin ?.id ?? null,
+      plugin: updatedPlugin?.id ?? null,
     });
 
     await Blobs.replaceCollection(updatedBlob.id, 'configs').members(configIDs)
@@ -76,7 +76,7 @@ module.exports = {
     // TODO: `source` and `plugin` will be null if they were updated
     return {
       ...updatedBlob,
-      url: `/share/${updatedBlob.id}`,
+      url: `#/share/${updatedBlob.id}`,
     };
   },
 };

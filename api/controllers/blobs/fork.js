@@ -55,7 +55,7 @@ module.exports = {
       });
 
     // Add share link to res body
-    forkBlob.url = `/share/${forkBlob.id}`;
+    forkBlob.url = `#/share/${forkBlob.id}`;
 
     // Return everything in forkBlob apart from the `source` and `plugin` field
     return _.omit(forkBlob, 'source', 'plugin');
