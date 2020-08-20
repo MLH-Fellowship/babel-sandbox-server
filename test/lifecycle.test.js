@@ -1,27 +1,17 @@
 var sails = require('sails');
 
-before(function(done) {
-
-  this.timeout(5000);
-
-  sails.lift({
-    hooks: { grunt: false },
-    log: { level: 'warn' },
-        
-
-  }, function(err) {
-    if (err) { return done(err); }
-
-    // Create some records in the database
-
-    return done();
-  });
+// Global before hook
+before(function (done) {
+    sails.lift({
+      // wipe/drop ALL data and rebuild models every time test is run
+      models: { migrate: 'drop' },
+        log: { level: 'warn' },
+    }, function (err) {
+        if (err) { return done(err); }
+        return done();
+    });
 });
 
-after(function(done) {
-
-  // Destroy the records created above
-
-  sails.lower(done);
-
+after(function (done) {
+    sails.lower(done);
 });
