@@ -10,8 +10,8 @@ module.exports = {
       'config',
     ]
   },
-  
-  blob_1: {
+
+  blob1: {
     source: 'source_1',
     plugin: 'plugin_1',
     configs: [
@@ -19,10 +19,10 @@ module.exports = {
       'config_2'
     ]
   },
-  
-  blob_2: {
+
+  blob2: {
     source: 'source_2',
     plugin: 'plugin_2',
   },
 
-}
+};
