@@ -17,12 +17,17 @@ a [Sails v1](https://sailsjs.com) application
 + Install Sails.js: `npm install -g sails`
 + Install dependencies: `npm install`
 + Run: `sails lift` or `sails lift --port NUMBER` if you encounter `EADDRINUSE`
++ Run: `npm test` or `PORT=... npm test` to verify Mongo has been set up
 + Open [Postman](https://www.postman.com/downloads/)
-+ Create a new POST request
-+ Enter: `http://localhost:1337/api/v1/config/update` and click Send
++ Create a new GET request
++ Enter: `http://localhost:1337/api/v1/blobs/view` and click Send
 + Expected output: `status 200 ok`
 
-### Version info
+### Contribution Guidelines
++ Add an appropriate API test for any server/logic related change
++ Run: `npm test` or `PORT=... npm test` and ensure all test cases pass before making a PR
+
+### Version Info
 
 This app was originally generated on Mon Jul 27 2020 13:07:39 GMT-0500 (Central Daylight Time) using Sails v1.2.4.
 
